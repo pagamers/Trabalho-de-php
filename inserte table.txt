@@ -1,0 +1,25 @@
+INSERT INTO usuarios (nombre, email, contrasena)
+VALUES
+  ('Ana Silva', 'ana.silva@email.com', 'senha123'),
+  ('Carlos Pérez', 'carlos.perez@email.com', 'senha456'),
+  ('Lucía Gómez', 'lucia.gomez@email.com', 'senha789');
+
+INSERT INTO categorias (usuario_id, nombre, color)
+VALUES
+  (1, 'Trabajo', 'azul'),
+  (2, 'Personal', 'verde'),
+  (3, 'Estudios', 'rojo');
+
+
+INSERT INTO tareas (usuario_id, categoria_id, titulo, descripcion, fecha, prioridad, completada, es_recurrente, frecuencia)
+VALUES
+  (1, 1, 'Preparar informe mensual', 'Reunir datos de ventas y enviar al jefe', '2026-09-20', 'alta', 0, 1, 'mensual'),
+  (2, 2, 'Comprar regalos', 'Lista de cumpleaños de la familia', '2026-09-18', 'media', 0, 0, NULL),
+  (3, 3, 'Estudiar para el examen', 'Capítulos 4, 5 y 6', '2026-09-22', 'alta', 0, 0, NULL);
+
+
+INSERT INTO subtareas (tarea_id, titulo, completada)
+VALUES
+  (1, 'Juntar datos de ventas', 0),
+  (2, 'Elegir regalos de la lista', 0),
+  (3, 'Leer el capítulo 4', 1);
