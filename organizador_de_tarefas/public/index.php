@@ -1,5 +1,21 @@
 <?php
 require_once "../config/conexao.php";
+
 $url = $_GET['url'] ?? 'home';
-echo "<h2>Organizador de Tarefas - Sistema Ativo</h2>";
-echo "Você solicitou a página: <strong>$url</strong>";
+
+switch ($url) {
+    case 'home':
+        require "../app/Views/home.php";
+        break;
+    case 'usuarios':
+        require "../app/Views/usuarios.php";
+        break;
+    case 'categorias':
+        require "../app/Views/categorias.php";
+        break;
+    case 'tareas':
+        require "../app/Views/tareas.php";
+        break;
+    default:
+        echo "Página não encontrada";
+}

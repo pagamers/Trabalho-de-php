@@ -61,5 +61,22 @@ public function buscarPorId($id) {
         return $stmt->execute(['id' => $id]);
 
     }
+ public function atualizar($id, $dados){
 
+        $sql = "UPDATE categorias SET nombre = :nombre, color = :color WHERE id = :id";
+
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute([
+
+            'nombre' => $dados['nombre'],
+
+            'color' => $dados['color'],
+
+            'id' => $id
+
+        ]);
+
+    }
  }
+ ?>

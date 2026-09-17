@@ -9,3 +9,4 @@ try {
 } catch (PDOException $e) {
     die("Erro ao abrir a despensa: " . $e->getMessage());
 }
+?>
