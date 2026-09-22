@@ -52,7 +52,7 @@ public function buscarPorId($id) {
         return $this->db->lastInsertId();
 
     }
- public function deletar($id) {
+ public function excluir($id) {
      
         $sql = "DELETE FROM categorias WHERE id = :id";
 

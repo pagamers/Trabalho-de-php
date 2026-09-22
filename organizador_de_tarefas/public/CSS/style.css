@@ -12,7 +12,6 @@ body {
     padding: 20px;
 }
 
-/* Layout do container */
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -21,15 +20,12 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
-/* Formulários */
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
-
 input, select, button {
     padding: 10px;
     border: 1px solid #ccc;
@@ -46,8 +42,6 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
-/* Listas de tarefas/usuários */
 .lista {
     list-style: none;
 }
@@ -57,4 +51,9 @@ button:hover {
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #eee;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }

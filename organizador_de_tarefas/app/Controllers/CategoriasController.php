@@ -1,13 +1,13 @@
 <?php
-require "app/Models/CategoriasModel.php";
+require_once __DIR__ . "/../Models/CategoriasModel.php";
 
 class CategoriasController {
 
-    public function home($conexao, $id = null) {
-        $model = new CategoriasModel($conexao);
-        $categorias = $model->buscarporusuario($id ?? 1);
-        $categoriaEditando = null;
-        require "app/Views/categorias.php";
+    public function home($conexao, $usuario_id = null, $categoria_id = null) {
+    $model = new CategoriasModel($conexao);
+    $categorias = $model->buscarporusuario($usuario_id ?? 1);
+    $categoriaEditando = $categoria_id ? $model->buscarPorId($categoria_id) : null;
+    return ['categorias' => $categorias, 'categoriaEditando' => $categoriaEditando];
     }
     public function criar($conexao) {
         $model = new CategoriasModel($conexao);
@@ -15,9 +15,9 @@ class CategoriasController {
         header("Location: index.php?url=categorias");
         exit;
     }
-    public function deletar($conexao, $id) {
+    public function excluir($conexao, $id) {
         $model = new CategoriasModel($conexao);
-        $model->deletar($id);
+        $model->excluir($id);
         header("Location: index.php?url=categorias");
         exit;
     }

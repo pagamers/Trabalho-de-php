@@ -7,6 +7,16 @@
             $this->db = $conexao;
         }
 
+        public function buscarPorId($id) {
+
+            $sql = "SELECT * FROM subtareas WHERE id = :id";
+
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->execute(['id' => $id]);
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
         public function buscarPorTareaId($tarea_id) {
 
             $sql = "SELECT * FROM subtareas WHERE tarea_id = :tarea_id";
@@ -54,7 +64,7 @@
             ]);
         }
 
-        public function deletar($id) {
+        public function excluir($id) {
 
             $sql = "DELETE FROM subtareas WHERE id = :id";
 
