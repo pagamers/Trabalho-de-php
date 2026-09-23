@@ -40,7 +40,7 @@ $usuarioEditando = $data['usuarioEditando'];
         <button type="submit"><?= $usuarioEditando ? 'Salvar' : 'Cadastrar' ?></button>
     </form>
 
-    <table border="1">
+    <table>
         <tr>
             <th>Nome</th>
             <th>Email</th>

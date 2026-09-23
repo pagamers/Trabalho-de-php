@@ -17,6 +17,11 @@ $data = $controller->home($conexao, 1, $_GET['id'] ?? null);
 $tarefas = $data['tarefas'];
 $tarefaEditando = $data['tarefaEditando'];
 $categorias = $categoriaController->home($conexao, 1)['categorias'];
+
+$categoriasPorId = [];
+foreach ($categorias as $cat) {
+    $categoriasPorId[$cat['id']] = $cat;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -47,7 +52,7 @@ $categorias = $categoriaController->home($conexao, 1)['categorias'];
                 </option>
             <?php endforeach; ?>
         </select>
-        <input type="number" name="usuario_id" value="1">
+        <input type="hidden" name="usuario_id" value="1">
         <input type="date" name="fecha" value="<?= htmlspecialchars($tarefaEditando['fecha'] ?? '') ?>">
 
         <select name="prioridad">
@@ -76,30 +81,37 @@ $categorias = $categoriaController->home($conexao, 1)['categorias'];
         <button type="submit"><?= $tarefaEditando ? 'Salvar' : 'Criar' ?></button>
     </form>
 
-    <table border="1">
+   <table>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Categoria</th>
+        <th>Fecha</th>
+        <th>Completada</th>
+        <th>Es Recurrente</th>
+        <th>Frecuencia</th>
+        <th>Prioridad</th>
+        <th>Ações</th>
+    </tr>
+    <?php foreach ($tarefas as $t): ?>
+        <?php $cat = $categoriasPorId[$t['categoria_id']] ?? null; ?>
         <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Fecha</th>
-            <th>Completada</th>
-            <th>Frecuencia</th>
-            <th>Prioridad</th>
-            <th>Ações</th>
+            <td><?= $t['id'] ?></td>
+            <td><?= htmlspecialchars($t['titulo']) ?></td>
+            <td style="color: <?= htmlspecialchars($cat['color'] ?? '#000000') ?>; font-weight: 600;">
+                <?= htmlspecialchars($cat['nombre'] ?? '—') ?>
+            </td>
+            <td><?= htmlspecialchars($t['fecha'] ?? '') ?></td>
+            <td><?= $t['completada'] ? 'Sim' : 'Não' ?></td>
+            <td><?= $t['es_recurrente'] ? 'Sim' : 'Não' ?></td>
+            <td><?= htmlspecialchars($t['frecuencia'] ?? '') ?></td>
+            <td><?= htmlspecialchars($t['prioridad'] ?? '') ?></td>
+            <td>
+                <a href="index.php?url=tareas&id=<?= $t['id'] ?>">Editar</a> |
+                <a href="index.php?url=tareas&id=<?= $t['id'] ?>&acao=excluir" onclick="return confirm('Excluir esta tarea?')">Excluir</a>
+            </td>
         </tr>
-        <?php foreach ($tarefas as $t): ?>
-            <tr>
-                <td><?= $t['id'] ?></td>
-                <td><?= htmlspecialchars($t['titulo']) ?></td>
-                <td><?= htmlspecialchars($t['fecha'] ?? '') ?></td>
-                <td><?= htmlspecialchars($t['completada'] ?? '') ?></td>
-                <td><?= htmlspecialchars($t['frecuencia'] ?? '') ?></td>
-                <td><?= htmlspecialchars($t['prioridad'] ?? '') ?></td>
-                <td>
-                    <a href="index.php?url=tareas&id=<?= $t['id'] ?>">Editar</a> |
-                    <a href="index.php?url=tareas&id=<?= $t['id'] ?>&acao=excluir" onclick="return confirm('Excluir esta tarea?')">Excluir</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+    <?php endforeach; ?>
+</table>
 </body>
 </html>

@@ -1,47 +1,147 @@
-/* Reset básico e tipografia */
+/* ============================================
+   Organizador de Tarefas — tema Minecraft
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P', monospace;
+    image-rendering: pixelated;
 }
 
 body {
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: #7ec850; /* verde pasto */
+    background-image:
+        linear-gradient(rgba(0,0,0,0.05) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 2px, transparent 2px);
+    background-size: 32px 32px;
+    color: #2b2b2b;
     padding: 20px;
+    font-size: 12px;
+    line-height: 1.6;
 }
 
+h1 {
+    background-color: #7a5230; /* madera */
+    color: #fff;
+    display: inline-block;
+    padding: 12px 16px;
+    border: 4px solid #4a3018;
+    box-shadow: 4px 4px 0 #2b1a0d;
+    text-shadow: 2px 2px #000;
+    margin-bottom: 16px;
+}
+
+/* Layout do container -> bloco de pedra */
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background: #fff;
+    background: #a6a6a6; /* pedra */
+    border: 4px solid #5c5c5c;
+    box-shadow:
+        inset 0 0 0 4px #8c8c8c,
+        6px 6px 0 rgba(0,0,0,0.4);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 0; /* nada de bordes redondeados, todo cuadrado */
 }
+
+/* Links de navegação */
+p a {
+    color: #1d3fd6;
+    text-decoration: none;
+    background: #d9d9d9;
+    padding: 2px 6px;
+    border: 2px solid #8c8c8c;
+}
+p a:hover {
+    background: #fff2a8;
+}
+
+/* Formulários */
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-input, select, button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    gap: 12px;
+    margin-bottom: 24px;
+    background: #c6c6c6;
+    border: 4px solid #8c8c8c;
+    box-shadow: inset 0 0 0 2px #ececec;
+    padding: 16px;
 }
 
+input, select, button, textarea {
+    padding: 10px;
+    border: 3px solid #565656;
+    background: #dcdcdc;
+    color: #1a1a1a;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.15);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.15), 0 0 0 2px #a8e6a1;
+}
+
+/* Botão estilo bloco de grama */
 button {
-    background-color: #007bff;
-    color: white;
-    border: none;
+    background: linear-gradient(#8bc34a 0 40%, #7a5230 40% 100%);
+    color: #fff;
+    border: 3px solid #3e2a15;
     cursor: pointer;
+    text-shadow: 1px 1px #000;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    transition: transform 0.05s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(#9ccc55 0 40%, #8a5f38 40% 100%);
 }
+
+button:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #d9d9d9;
+    border: 3px solid #565656;
+    font-size: 11px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 2px solid #8c8c8c;
+}
+
+th {
+    background: #4a3018; /* madera escura */
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+
+tr:nth-child(even) td {
+    background: #ececec;
+}
+
+td a {
+    color: #1d3fd6;
+    text-decoration: none;
+}
+td a:hover {
+    color: #b23c17; /* vermelho redstone no hover de "Excluir" */
+}
+
+/* Listas de tarefas/usuários */
 .lista {
     list-style: none;
 }
@@ -50,10 +150,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    background: #d9d9d9;
+    border: 2px solid #8c8c8c;
+    margin-bottom: 4px;
 }

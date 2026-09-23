@@ -61,7 +61,7 @@ $subtarefaEditando = $data['subtarefaEditando'];
             <button type="submit"><?= $subtarefaEditando ? 'Salvar' : 'Criar' ?></button>
         </form>
 
-        <table border="1">
+        <table>
             <tr>
                 <th>ID</th>
                 <th>Título</th>

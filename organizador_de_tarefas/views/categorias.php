@@ -20,7 +20,9 @@ $categoriaEditando = $data['categoriaEditando'];
 <head>
     <meta charset="UTF-8">
     <title>Categorias</title>
+    <link rel="stylesheet" href="../public/CSS/style.css">
 </head>
+
 <body>
     <h1>Categorias</h1>
     <p>
@@ -33,21 +35,23 @@ $categoriaEditando = $data['categoriaEditando'];
     <form method="POST">
         <input type="hidden" name="id" value="<?= htmlspecialchars($categoriaEditando['id'] ?? '') ?>">
         <input type="text" name="nombre" placeholder="Nome" value="<?= htmlspecialchars($categoriaEditando['nombre'] ?? '') ?>" required>        
-        <input type="text" name="color" placeholder="Cor" value="<?= htmlspecialchars($categoriaEditando['color'] ?? '') ?>">
-        <input type="number" name="usuario_id" value="1" hidden>
+        <input type="color" name="color" value="<?= htmlspecialchars($categoriaEditando['color'] ?? '#000000') ?>">
+        <input type="hidden" name="usuario_id" value="1">
         <button type="submit">Criar</button>
     </form>
 
     <table>
-        <tr><th>ID</th><th>Nome</th><th>Cor</th></tr>
+        <th>ID</th><th>Nome</th><th>Cor</th><th>Usuario ID</th>
         <?php foreach ($categorias ?? [] as $c): ?>
             <tr>
                 <td><?= $c['id'] ?></td>
-                <td><?= htmlspecialchars($c['nombre']) ?></td>
+                <td style="color: <?= htmlspecialchars($c['color']) ?>; font-weight: 600;">
+                    <?= htmlspecialchars($c['nombre']) ?>
+                </td>
                 <td><?= htmlspecialchars($c['color']) ?></td>
+                <td><?= $c['usuario_id'] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
 </body>
-<link rel="stylesheet" href="CSS/style.css">
 </html>

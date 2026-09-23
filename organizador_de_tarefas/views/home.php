@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="../public/CSS/style.css">
 </head>
 <body>
     <h1>Organizador de Tarefas</h1>
@@ -13,5 +14,4 @@
         <a href="index.php?url=subtarefas">Subtarefas</a><br>
     </p>
 </body>
-<link rel="stylesheet" href="CSS/style.css">
 </html>
