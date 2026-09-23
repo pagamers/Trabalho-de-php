@@ -33,9 +33,9 @@ $categoriaEditando = $data['categoriaEditando'];
     </p>
 
     <form method="POST">
-        <input type="hidden" name="id" value="<?= htmlspecialchars($categoriaEditando['id'] ?? '') ?>">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($categoriaEditando['id'] ?? '') ?>" required>
         <input type="text" name="nombre" placeholder="Nome" value="<?= htmlspecialchars($categoriaEditando['nombre'] ?? '') ?>" required>        
-        <input type="color" name="color" value="<?= htmlspecialchars($categoriaEditando['color'] ?? '#000000') ?>">
+        <input type="color" name="color" value="<?= htmlspecialchars($categoriaEditando['color'] ?? '#000000') ?>" required >
         <input type="hidden" name="usuario_id" value="1">
         <button type="submit">Criar</button>
     </form>

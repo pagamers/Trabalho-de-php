@@ -40,9 +40,9 @@ foreach ($categorias as $cat) {
     </p>
 
     <form method="POST">
-        <input type="hidden" name="id" value="<?= htmlspecialchars($tarefaEditando['id'] ?? '') ?>">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($tarefaEditando['id'] ?? '') ?>" required>
         <input type="text" name="titulo" placeholder="Título" value="<?= htmlspecialchars($tarefaEditando['titulo'] ?? '') ?>" required>
-        <textarea name="descripcion" placeholder="Descrição"><?= htmlspecialchars($tarefaEditando['descripcion'] ?? '') ?></textarea>
+        <textarea name="descripcion" placeholder="Descrição" required><?= htmlspecialchars($tarefaEditando['descripcion'] ?? '') ?></textarea>
 
         <select name="categoria_id" required>
             <option value="">Categoria</option>
@@ -53,9 +53,9 @@ foreach ($categorias as $cat) {
             <?php endforeach; ?>
         </select>
         <input type="hidden" name="usuario_id" value="1">
-        <input type="date" name="fecha" value="<?= htmlspecialchars($tarefaEditando['fecha'] ?? '') ?>">
+        <input type="date" name="fecha" value="<?= htmlspecialchars($tarefaEditando['fecha'] ?? '') ?>" required>
 
-        <select name="prioridad">
+        <select name="prioridad" required>
             <?php $prioridadAtual = $tarefaEditando['prioridad'] ?? 'media'; ?>
             <option value="baja" <?= $prioridadAtual === 'baja' ? 'selected' : '' ?>>Baja</option>
             <option value="media" <?= $prioridadAtual === 'media' ? 'selected' : '' ?>>Media</option>
@@ -63,11 +63,11 @@ foreach ($categorias as $cat) {
         </select>
 
         <label>
-            <input type="checkbox" name="completada" value="1" <?= !empty($tarefaEditando['completada']) ? 'checked' : '' ?>> Completada
+            <input type="checkbox" name="completada" value="1" required <?= !empty($tarefaEditando['completada']) ? 'checked' : '' ?>> Completada
         </label>
 
         <label>
-            <input type="checkbox" name="es_recurrente" value="1" <?= !empty($tarefaEditando['es_recurrente']) ? 'checked' : '' ?>> Recorrente
+            <input type="checkbox" name="es_recurrente" value="1" required <?= !empty($tarefaEditando['es_recurrente']) ? 'checked' : '' ?>> Recorrente
         </label>
 
         <select name="frecuencia">
